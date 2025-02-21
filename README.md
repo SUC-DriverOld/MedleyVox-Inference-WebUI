@@ -5,7 +5,7 @@
 WebUI and notebook for [MedleyVox](https://github.com/jeonchangbin49/MedleyVox) inference.<br>
 [![Open in Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SUC-DriverOld/MedleyVox-Inference-WebUI/blob/master/MedleyVox.ipynb)
 [![GitHub release](https://img.shields.io/github/v/release/SUC-DriverOld/MedleyVox-Inference-WebUI?label=Version)](https://github.com/SUC-DriverOld/MedleyVox-Inference-WebUI/releases/latest)
-[![GitHub license](https://img.shields.io/github/license/SUC-DriverOld/MedleyVox-Inference-WebUI?label=License)](https://github.com/SUC-DriverOld/MSST-WebUI/blob/master/MedleyVox-Inference-WebUI)
+[![GitHub license](https://img.shields.io/github/license/SUC-DriverOld/MedleyVox-Inference-WebUI?label=License)](https://github.com/SUC-DriverOld/MedleyVox-Inference-WebUI/blob/master/LICENSE)
 
 </div>
 
