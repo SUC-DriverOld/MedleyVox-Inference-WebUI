@@ -1,0 +1,8 @@
+.vscode/
+__pycache__
+.idea/
+inputs/
+results/
+temp/
+cache/
+README_OLD.md

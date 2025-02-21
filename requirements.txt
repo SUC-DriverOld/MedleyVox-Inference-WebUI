@@ -1,0 +1,12 @@
+gradio
+numpy
+librosa==0.9.1
+soundfile
+torch
+torchaudio
+asteroid
+pyloudnorm
+matplotlib
+praat-parselmouth
+fairseq
+webrtcvad
