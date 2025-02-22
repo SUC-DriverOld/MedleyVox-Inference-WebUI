@@ -6,6 +6,7 @@ WebUI and notebook for [MedleyVox](https://github.com/jeonchangbin49/MedleyVox) 
 [![Open in Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SUC-DriverOld/MedleyVox-Inference-WebUI/blob/master/MedleyVox.ipynb)
 [![GitHub release](https://img.shields.io/github/v/release/SUC-DriverOld/MedleyVox-Inference-WebUI?label=Version)](https://github.com/SUC-DriverOld/MedleyVox-Inference-WebUI/releases/latest)
 [![GitHub license](https://img.shields.io/github/license/SUC-DriverOld/MedleyVox-Inference-WebUI?label=License)](https://github.com/SUC-DriverOld/MedleyVox-Inference-WebUI/blob/master/LICENSE)
+[![Hugging Face Model](https://img.shields.io/badge/Hugging%20Face-Models-blue?)](https://huggingface.co/Sucial/MedleyVox-Inference-WebUI)
 
 </div>
 
@@ -15,7 +16,7 @@ Medley Vox is a [dataset for testing algorithms for separating multiple singers]
 
 ## Usage
 
-[Click here]((https://colab.research.google.com/github/SUC-DriverOld/MedleyVox-Inference-WebUI/blob/master/MedleyVox.ipynb)) to run the webUI on Google Colab. You can also run this code on your local machine by installing the requirements and running the `webui.py` file. For Windows users, I will provide a one-click pakage in the future.
+[Click here]((https://colab.research.google.com/github/SUC-DriverOld/MedleyVox-Inference-WebUI/blob/master/MedleyVox.ipynb)) to run the webUI on Google Colab. You can also run this code on your local machine by installing the requirements and running the `webui.py` file. For Windows users, we provide a [one-click startup pakage](https://huggingface.co/Sucial/MedleyVox-Inference-WebUI/resolve/main/MedleyVox_250222.7z).
 
 - Clone this repository.
 
