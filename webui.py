@@ -2,6 +2,7 @@ __author__ = "Sucial: https://github.com/SUC-DriverOld"
 __version__ = "1.0.0"
 
 import os
+import sys
 import shutil
 import glob
 import gradio as gr
@@ -16,6 +17,7 @@ os.makedirs("pretrained", exist_ok=True)
 MODEL_DIR = "checkpoints"
 PRETRAINED_MODEL_DIR = "pretrained"
 TEMP_DIR = "temp"
+PYTHON = sys.executable
 model_list = [m for m in os.listdir(MODEL_DIR) if os.path.isdir(os.path.join(MODEL_DIR, m))]
 i18n = I18nAuto(language=os.environ.get("LANGUAGE", "auto"))
 
@@ -79,7 +81,6 @@ def inference_folder_fn(model_name, use_overlapadd, use_gpu, separate_storage, o
     return i18n("Inference process finished.")
 
 def inference(model_name, use_overlapadd, use_gpu, separate_storage, output_format, vad_method, spectral_features, ola_window_len, ola_hop_len, w2v_nth_layer_output, use_ema_model, mix_consistent_out, reorder_chunks, skip_error, folder_input, store_dir):
-    print(f"Model: {model_name}, Use overlapadd: {use_overlapadd}, Use GPU: {use_gpu}, Separate storage: {separate_storage}, Output format: {output_format}, VAD method: {vad_method}, Spectral features: {spectral_features}, OLA window length: {ola_window_len}, OLA hop length: {ola_hop_len}, Wav2Vec nth layer output: {w2v_nth_layer_output}, Use EMA model: {use_ema_model}, Mix consistent output: {mix_consistent_out}, Reorder chunks: {reorder_chunks}, Skip error: {skip_error}, Folder input: {folder_input}, Store dir: {store_dir}")
     model_file = os.path.basename(glob.glob(os.path.join(MODEL_DIR, model_name, "*.pth"))[0])
     target = model_file.replace(".pth", "")
     exp_name = model_name
@@ -117,8 +118,8 @@ def inference(model_name, use_overlapadd, use_gpu, separate_storage, output_form
     else:
         params += f" --separate_storage n"
     params += f" --output_format {output_format} --inference_data_dir \"{folder_input}\" --results_save_dir \"{store_dir}\""
-    print(params)
-    os.system(f"python inference.py {params}")
+    print(f"{PYTHON} inference.py {params}")
+    os.system(f"{PYTHON} inference.py {params}")
 
 def stop_inference_fn():
     for process in multiprocessing.active_children():

@@ -6,3 +6,5 @@ results/
 temp/
 cache/
 README_OLD.md
+python310/
+*.bat

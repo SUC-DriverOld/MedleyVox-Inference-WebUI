@@ -57,6 +57,10 @@ Medley Vox is a [dataset for testing algorithms for separating multiple singers]
     pretrained
         └── xlsr_53_56k.pt
     ```
+    After downloading, use the following command to fix the model (Refer to [fairseq/issues/4585](https://github.com/facebookresearch/fairseq/issues/4585)):
+    ```bash
+    python fix_xlsr.py
+    ```
 
 - Run the webUI. To specify the language, set environment variable `LANGUAGE="en_US"` or `LANGUAGE="zh_CN"`. To specify the IP address and port, use the `-i` and `-p` options. To enable gradio share link, use the `-s` option. To auto clean WebUI cache, use the `--auto_clean_cache. After running the webUI, it will automatically open a web page in your default browser.
 

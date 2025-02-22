@@ -1,4 +1,6 @@
 import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import json
 import argparse
 import numpy as np
@@ -18,7 +20,7 @@ warnings.filterwarnings("ignore")
 
 model = None
 continuous_nnet = None
-device = "cpu"
+device = torch.device("cpu")
 
 
 def main():
@@ -57,7 +59,12 @@ def main():
 
     # load model architecture
     model = load_model_with_args(args)
-    device = torch.device( "cuda" if torch.cuda.is_available() and args.use_gpu else "cpu")
+
+    if torch.cuda.is_available() and args.use_gpu:
+        device = torch.device("cuda")
+        print("Using GPU for inference")
+    else:
+        print("Using CPU for inference")
 
     target_model_path = f"{args.exp_result_dir}/{args.target}.pth"
     checkpoint = torch.load(target_model_path, map_location=device)

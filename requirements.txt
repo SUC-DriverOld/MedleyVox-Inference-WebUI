@@ -2,7 +2,7 @@ gradio
 numpy
 librosa==0.9.1
 soundfile
-torch
+torch<2.6.0
 torchaudio
 asteroid
 pyloudnorm
