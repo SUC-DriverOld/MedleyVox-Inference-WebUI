@@ -58,11 +58,34 @@ Medley Vox is a [dataset for testing algorithms for separating multiple singers]
         └── xlsr_53_56k.pt
     ```
 
-- Run the webUI. After running the webUI, it will automatically open a web page in your default browser.
+- Run the webUI. To specify the language, set environment variable `LANGUAGE="en_US"` or `LANGUAGE="zh_CN"`. To specify the IP address and port, use the `-i` and `-p` options. To enable gradio share link, use the `-s` option. To auto clean WebUI cache, use the `--auto_clean_cache. After running the webUI, it will automatically open a web page in your default browser.
 
     ```bash
+    # Specify the language
+    # Powershell:
+    $env:LANGUAGE="en_US"
+    # CMD:
+    set LANGUAGE="en_US"
+    # Bash:
+    export LANGUAGE="en_US"
+
+    # Run the webUI, for example:
     python webui.py --auto_clean_cache
     ```
+
+> [!NOTE]
+> - At present, the audio output sampling rate supported by the model is 24000kHz and cannot be changed. To solve this, you can use [AudioSR](https://github.com/haoheliu/versatile_audio_super_resolution), [Apollo](https://github.com/JusperLee/Apollo), or [Music Source Separation Training](https://github.com/ZFTurbo/Music-Source-Separation-Training) for audio super-resolution.
+> - When using WebUI on cloud platforms or Colab, please place the audio to be processed in the 'inputs' folder, and the processing results will be stored in the 'results' folder. The 'Select folder' and 'Open folder' buttons are invalid in the cloud.
+
+### Chunk-wise processing
+
+If the input is too long, it may be impossible to impossible due to lack of VRAM, or performance may be degraded at all. In that case, use --use_overlapadd. Among the --use_overlapadd options, "ola", "ola_norm", and "w2v" all work similarly to LambdaOverlapAdd in asteroid.
+
+- ola: Same as LambdaOverlapAdd in asteroid.
+- ola_norm: LambdaOverlapAdd with input applied chunk-wise loudness normalization (we used loudness normalization in training stage). The effect was not good. 
+- w2v: When calculating the singer assignment in the overlapped region of the chunk in the LambdaOverlapAdd function based on the wave2vec2.0-xlsr model, the LambdaOverlapAdd implemented in the asteroid is simply obtained as L1 in the waveform stage. This is transformed into cosine similarity of w2v feature.
+- w2v_chunk: First use VAD and divide it into chunks, then chunk-wise processing. Unlike asteroid LambdaOverlapAdd, there is no overlapped region of chunk in front and rear, so it should not be implemented as L1 distance in waveform, and the similarity in feature stage is obtained. Calculated by continuously accumulating the w2v feature for each chunk.
+- sf_chunk: The principle is the same as w2v_chunk, but instead of w2v, use a spectral feature such as mfcc or spectral centroid.
 
 ## Command Line
 

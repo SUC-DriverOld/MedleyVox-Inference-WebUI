@@ -17,3 +17,4 @@ from utils.parselmouth_utils import change_pitch_and_formant, change_pitch_and_f
 from utils.lr_scheduler import CosineAnnealingWarmUpRestarts
 from utils.train_utils import worker_init_fn, str2bool
 from utils.stft_utils import angle, my_magphase
+from utils.i18n import I18nAuto
